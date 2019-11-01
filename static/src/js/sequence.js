@@ -131,11 +131,6 @@ odoo.define('l10n_co_pos_tax.sequence', function(require) {
             var company_partner = this.pos.company_partner;
             var dian_resolution_sequence;
 
-            console.log('prueba nombre');
-            console.log(company_partner);
-            console.log(company_partner[0]['street']);
-            console.log(company_partner[0]);
-
             if(this.get_total_with_tax() < 0) {
                 dian_resolution_sequence = this.pos.dian_resolution_sequence_refund;
             } else {
@@ -150,8 +145,6 @@ odoo.define('l10n_co_pos_tax.sequence', function(require) {
             } else {
                 receipt.company.street = "Compañía sin Dirección";
             }
-
-
 
             if( dian_resolution_sequence != undefined ){
                 if(dian_resolution_sequence.active_resolution != false) {
@@ -361,6 +354,3 @@ odoo.define('l10n_co_pos_tax.sequence', function(require) {
     });
 
 });
-
-
-

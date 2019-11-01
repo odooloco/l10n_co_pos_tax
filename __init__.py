@@ -5,9 +5,6 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.    #
 #                                                                             #
 #                                                                             #
-# Copyright (C) 2016  Dominic Krimmer                                         #
-#                     Luis Alfredo da Silva (luis.adasilvaf@gmail.com)        #
-#                     Diego Carvajal, diegoivanc@gmail.com                    #
 #                                                                             #
 # Co-Authors    Odoo LoCo                                                     #
 #               Localización funcional de Odoo para Colombia                  #

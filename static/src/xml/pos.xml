@@ -52,7 +52,7 @@
                   <t t-if='receipt.total_with_tax &gt; 0'>
                       Factura de Venta No.:
                   </t>
-		<t t-if="receipt.dian_resolution_sequence.active_resolution">
+                  <t t-if="receipt.dian_resolution_sequence.active_resolution">
                     <t t-if='receipt.total_with_tax &gt; 0'>
                         <t t-esc="order.number_next_dian" />
                     </t>
@@ -70,7 +70,7 @@
                   </b><br />
                   Fecha: <t t-esc="moment().format('L LT')"/><br />
                   <t t-if='receipt.total_with_tax &gt; 0'>
-                <t t-if="widget.pos.dian_resolution_sequence.active_resolution">
+                <t t-if="receipt.dian_resolution_sequence.active_resolution">
 
                   Rango Facturación: <t t-esc="receipt.dian_resolution_sequence.number_from" /> - <t t-esc="receipt.dian_resolution_sequence.number_to" /><br />
                     Autorización DIAN número: <t t-esc="receipt.dian_resolution_sequence.resolution_number" /><br />

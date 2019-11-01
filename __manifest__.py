@@ -5,9 +5,6 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.    #
 #                                                                             #
 #                                                                             #
-# Copyright (C) 2016  Dominic Krimmer                                         #
-#                     Luis Alfredo da Silva (luis.adasilvaf@gmail.com)        #
-#                     Diego Carvajal, diegoivanc@gmail.com                    #
 #                                                                             #
 # Co-Authors    Odoo LoCo                                                     #
 #               Localización funcional de Odoo para Colombia                  #
@@ -28,16 +25,16 @@
 ###############################################################################
 
 {
-    'name': 'Colombia - Punto de venta - tax extension',
+    'name': 'Punto de venta - Colombia - Extension de Impuestos',
     'category': 'Localization',
-    'version': '1.0',
-    'author': 'Dominic Krimmer,Luis Alfredo da Silva (luis.adasilvaf@gmail.com),Diego Carvajal, diegoivanc@gmail.com , odoo loco',
+    'version': '12.0',
+    'author': 'Odoo LoCo',
     'license': 'AGPL-3',
-    'maintainer': ' ',
-    'website': ' ',
+    'maintainer': 'Odoo LoCo',
+    'website': 'https://github.com/odooloco',
     'summary': ' ',
     'description': """
-Colombia Point of Sale tax extension:
+Punto de Venta Colombia Extension de Impuestos:
 ======================
   """,
     'depends': [
@@ -48,8 +45,8 @@ Colombia Point of Sale tax extension:
     'data': [
         'security/ir.model.access.csv',
         'views/pos_view.xml',
-        'views/pos_config.xml',
+        'views/pos_config.xml'
     ],
-    'qweb': ['static/src/xml/pos.xml'],
+    'qweb': ['static/src/xml/*.xml'],
     'installable': True,
 }
