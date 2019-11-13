@@ -389,11 +389,11 @@ class PosConfig(models.Model):
                 remaining_days = pos.sequence_id.remaining_days
                 dian_resolution = pos.env['ir.sequence.dian_resolution'].search(
                     [('sequence_id', '=', pos.sequence_id.id), ('active_resolution', '=', True)])
-                today = datetime.strptime(fields.Date.context_today(pos), '%Y-%m-%d')
+                today = datetime.strptime(str(fields.Date.today()), '%Y-%m-%d')
 
                 if len(dian_resolution) > 0:
                     dian_resolution.ensure_one()
-                    date_to = datetime.strptime(dian_resolution['date_to'], '%Y-%m-%d')
+                    date_to = datetime.strptime(str(dian_resolution['date_to']), '%Y-%m-%d')
                     days = (date_to - today).days
 
                     pos.not_has_valid_dian = False
@@ -414,7 +414,10 @@ class PosConfig(models.Model):
 
     @api.model
     def create(self, values):
+        _logger.info('verificando')
+        _logger.info('verificando')
         IrSequence = self.env['ir.sequence']
+
 
         val = {
             'name': 'POS Refund %s' % values['name'],
