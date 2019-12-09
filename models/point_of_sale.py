@@ -179,10 +179,28 @@ class PosOrder(models.Model):
                     .search([('sequence_id', '=', session.config_id.sequence_id.id),
                              ('active_resolution', '=', True)], limit=1)
             else:
-                values['name'] = session.config_id.sequence_refund_id._next()
-                sequence = self.env['ir.sequence.dian_resolution'] \
+                if session.config_id.sequence_refund_id:
+                    values['name'] = session.config_id.sequence_refund_id._next()
+                    sequence = self.env['ir.sequence.dian_resolution'] \
                     .search([('sequence_id', '=', session.config_id.sequence_refund_id.id),
                              ('active_resolution', '=', True)], limit=1)
+                else:
+                    IrSequence = self.env['ir.sequence']
+                    val = {
+                       'name': 'POS Refund %s' % values['name'],
+                       'padding': 4,
+                       'prefix': "%s/" % values['name'],
+                       'code': "pos.order",
+                       'company_id': values.get('company_id', False)
+                    }
+                    session.config_id.sequence_refund_id = IrSequence.create(val).id
+                    values['name'] = session.config_id.sequence_refund_id._next()
+                    sequence = self.env['ir.sequence.dian_resolution'] \
+                    .search([('sequence_id', '=', session.config_id.sequence_refund_id.id),
+                             ('active_resolution', '=', True)], limit=1)
+
+
+
             if sequence.exists():
                 order.write({
                     'resolution_number': sequence['resolution_number'],
@@ -210,7 +228,6 @@ class PosOrder(models.Model):
     @api.multi
     def refund(self):
         abs = super(PosOrder, self).refund()
-
         refund_ids = abs['res_id']
         orders = self.env['pos.order'].browse(refund_ids)
 
